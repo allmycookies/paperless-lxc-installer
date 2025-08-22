@@ -1,12 +1,14 @@
 #!/bin/bash
 
 # ==============================================================================
-# Paperless-ngx Installer & Manager (Intelligent & Interactive) for Debian 12 - V25
+# Paperless-ngx Installer & Manager (Intelligent & Interactive) for Debian 12 - V26
 #
 # - Performs an interactive initial installation with sane defaults.
-# - Generates required system locales to prevent database creation errors.
 # - Checks Ghostscript version and only compiles from source if necessary.
 # - Detects an existing installation and provides a full management menu.
+# - Manages services (status, start, stop, autostart).
+# - Provides options for updates, reinstallation, and uninstallation.
+# - Provides an option to reset the user password.
 #
 # (c) 2025 Denys Safra / Github:allmycookies
 # ==============================================================================
@@ -100,9 +102,9 @@ ghostscript_update() {
     echo "✅ Library cache updated."
 
     echo "Step 8: Cleaning up temporary files..."
+    # CORRECTED: Clean up from the /tmp directory directly, as the source folder might be gone
     cd /tmp
     rm -rf "$GS_SOURCE_DIR" "$GS_ARCHIVE_NAME"
-    cd - > /dev/null
     echo "✅ Cleanup complete."
     echo "--- Ghostscript update successful ---"
 }
@@ -278,7 +280,7 @@ reset_password() {
     fi
 
     cd "${PAPERLESS_HOME}/src"
-    echo -e "$NEW_PASSWORD\n$NEW_PASSWORD" | sudo -u "${PAPERLESS_USER}" -H "${PAPERLESS_HOME}/venv/bin/python3" manage.py changepword "${PAPERLESS_USER}"
+    echo -e "$NEW_PASSWORD\n$NEW_PASSWORD" | sudo -u "${PAPERLESS_USER}" -H "${PAPERLESS_HOME}/venv/bin/python3" manage.py changepassword "${PAPERLESS_USER}"
     cd - > /dev/null
     
     echo "✅ Password for '${PAPERLESS_USER}' has been successfully reset."
