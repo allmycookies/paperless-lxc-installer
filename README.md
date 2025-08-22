@@ -40,7 +40,7 @@ Log in as the `root` user and execute the following command. The script will be 
 ### Option 1: `curl` (Recommended)
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/allmycookies/paperless-lxc-installer/main/pl-ngx-installer.sh | bash
+bash <(curl -sSL https://raw.githubusercontent.com/allmycookies/paperless-lxc-installer/main/pl-ngx-installer.sh)
 ```
 
 -----
@@ -48,7 +48,7 @@ curl -sSL https://raw.githubusercontent.com/allmycookies/paperless-lxc-installer
 ### Option 2: `wget`
 
 ```bash
-wget -qO - https://raw.githubusercontent.com/allmycookies/paperless-lxc-installer/main/pl-ngx-installer.sh | bash
+bash <(wget -qO - https://raw.githubusercontent.com/allmycookies/paperless-lxc-installer/main/pl-ngx-installer.sh)
 ```
 
 -----
