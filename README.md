@@ -35,9 +35,23 @@ All you need is a running Debian 12 LXC container.
 
 Log in as the `root` user and execute the following command. The script will be downloaded and run, guiding you through the next steps.
 
+-----
+
+### Option 1: `curl` (Recommended)
+
 ```bash
 curl -sSL https://raw.githubusercontent.com/allmycookies/paperless-lxc-installer/main/pl-ngx-installer.sh | bash
 ```
+
+-----
+
+### Option 2: `wget`
+
+```bash
+wget -qO - https://raw.githubusercontent.com/allmycookies/paperless-lxc-installer/main/pl-ngx-installer.sh | bash
+```
+
+-----
 
 **That's it\!**
 
