@@ -192,7 +192,7 @@ PAPERLESS_DATA_DIR=${PAPERLESS_HOME}/data
 PAPERLESS_MEDIA_ROOT=${PAPERLESS_HOME}/media
 PAPERLESS_OCR_LANGUAGE=${OCR_LANGUAGES//+/ }
 PAPERLESS_TIME_ZONE=${TIMEZONE}
-PAPERLESS_URL=http://$(hostname -I | awk '{print $1}')
+PAPERLESS_URL=${PAPERLESS_BASEURL}
 PAPERLESS_TESSDATA_PREFIX=${TESSDATA_PREFIX}
 PAPERLESS_WEBSERVER_HOST=0.0.0.0
 PAPERLESS_WEBSERVER_PORT=8000
@@ -460,6 +460,9 @@ else
     read -p "Installation directory [/opt/paperlessngx]: " PAPERLESS_HOME_INPUT
     PAPERLESS_HOME=${PAPERLESS_HOME_INPUT:-/opt/paperlessngx}
 
+    read -p "Paperless Base-URL [http://localhost]: " PAPERLESS_BASEURL_INPUT
+    PAPERLESS_BASEURL=${PAPERLESS_BASEURL_INPUT:-http://127.0.0.1}
+
     read -p "Paperless version [2.18.1]: " PAPERLESS_VERSION_INPUT
     PAPERLESS_VERSION=${PAPERLESS_VERSION_INPUT:-2.18.1}
 
@@ -508,6 +511,7 @@ else
     echo "Database:      ${PAPERLESS_DB_NAME}"
     echo "Directory:     ${PAPERLESS_HOME}"
     echo "Version:       ${PAPERLESS_VERSION}"
+    echo "URL:           ${PAPERLESS_BASEURL}"
     echo "Port:          8000"
     echo "Time zone:     ${TIMEZONE}"
     echo "Languages:     ${OCR_LANGUAGES}"
